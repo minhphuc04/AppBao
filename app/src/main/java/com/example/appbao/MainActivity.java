@@ -32,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
     TabItem mhome, mscience, mhealth, mtech, mentertainment, msports;
     PagerAdapter pagerAdapter;
     ImageView imgFingerLogin;
-    Toolbar mtoolbar;
+    Toolbar mtoolbar,hello;
     //Tran Minh Phuc
+
     String api = "ad1ed74dbeef4f6c806d417298267628";
 
     BottomNavigationView bottomNavigationView;
