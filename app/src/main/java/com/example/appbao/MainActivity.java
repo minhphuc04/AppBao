@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     PagerAdapter pagerAdapter;
     ImageView imgFingerLogin;
     Toolbar mtoolbar;
+    //Tran Minh Phuc
     String api = "ad1ed74dbeef4f6c806d417298267628";
 
     BottomNavigationView bottomNavigationView;
