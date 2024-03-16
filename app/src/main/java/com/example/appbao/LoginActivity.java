@@ -27,9 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView mCreateBtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+///hom nay an gi ?dâsdasdas
 
-    /// le quoc thinh
-    //Chieu nay lam nha hang nhaaaa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
