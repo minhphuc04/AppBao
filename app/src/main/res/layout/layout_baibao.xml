@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackgroud"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:background="#e8eaef"
+    tools:context=".News1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+
+                android:id="@+id/back"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+
+                android:layout_marginTop="7dp"
+                android:background="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView2"
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:text="Kỷ lục gia marathon thế giới tử nạn ở tuổi 24"
+
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                android:layout_marginHorizontal="11dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="#00FFFFFF"
+                >
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="600dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+
+                    app:srcCompat="@drawable/mara" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10sp"
+                android:text="Khoảng 23h giờ Nairobi, Kiptum lái chiếc Toyota Premio chở theo hai người gồm HLV Garvais Hakizimana và một phụ nữ tên Sharon Kosgey. Xe gặp tai nạn ở đường Elgeyo Marakwet-Ravine, khu vực Kaptagat.  Theo cảnh sát khu vực, Kiptum mất lái, lao xe ra khỏi đường và rơi xuống mương cách đó khoảng 60 mét trước khi tông vào một thân cây lớn.  Trong ba người, chỉ Sharon sống sót với nhiều chấn thương, được cấp cứu tại bệnh viện Racecourse. Chiếc xe hư hỏng nặng được kéo về đồn cảnh sát Kaptagat.  &quot;Kelvin Kiptum, người giữ kỷ lục marathon thế giới, tự gây tai nạn khi lái xe chở hai hành khách. Kiptum và Hakizimana chết tại chỗ. Người thứ ba đã được đưa tới bệnh viện&quot;, đại diện cảnh sát cho biết. Thi thể hai nạn nhân đã được đưa tới nhà xác bệnh viện Racecourse."
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

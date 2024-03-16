@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppBao" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+    </style>
+    <style name="ScreenBackgroud">
+        <item name="android:background" >
+            @color/black
+        </item>
+    </style>
+    <style name="CardBackgroud">
+        <item name="android:background" >
+            @color/darkGrey
+        </item>
+    </style>
+    <style name="TextColor">
+        <item name="android:textColor" >
+            @color/grey
+        </item>
+    </style>
+
+</resources>

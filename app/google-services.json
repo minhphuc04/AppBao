@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "80560316425",
+    "project_id": "appbao-3d929",
+    "storage_bucket": "appbao-3d929.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80560316425:android:a1588f865d3d8c0048d8d8",
+        "android_client_info": {
+          "package_name": "com.example.appbao"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVZmNvPn9vueGRJJ3PQQeFFzc3QNFcAe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

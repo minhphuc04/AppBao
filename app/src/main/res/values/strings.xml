@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TRANG CHỦ</string>
+    <string name="app_sport">THỂ THAO</string>
+    <string name="app_health">SỨC KHỎE</string>
+    <string name="app_science">KHOA HỌC</string>
+    <string name="app_entertainment">GIẢI TRÍ</string>
+    <string name="app_technology">CÔNG NGHỆ</string>
+
+    <string name="hello_blank_fragment" translatable="false">Xin chào, fragment trống</string>
+</resources>

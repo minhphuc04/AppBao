@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppBao" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.AppBao" parent="Base.Theme.AppBao" />
+    <style name="nightmodeswitch" parent="Theme.AppCompat.Light">
+        <item  name="colorControlActivated">@color/purple_700</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+    <style name="notiswitch" parent="Theme.AppCompat.Light">
+        <item  name="colorControlActivated">@color/purple_700</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+    <style name="ScreenBackgroud">
+        <item name="android:background" >
+        @color/white
+        </item>
+    </style>
+    <style name="CardBackgroud">
+        <item name="android:background" >
+            @color/white
+        </item>
+    </style>
+    <style name="TextColor">
+        <item name="android:textColor" >
+            @color/grey
+        </item>
+    </style>
+
+
+</resources>
