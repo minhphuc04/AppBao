@@ -73,9 +73,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
                 android:padding="14sp"
-                android:textColor="@color/black"
                 android:text="Khoảng 23h giờ Nairobi, Kiptum lái chiếc Toyota Premio chở theo hai người gồm HLV Garvais Hakizimana và một phụ nữ tên Sharon Kosgey. Xe gặp tai nạn ở đường Elgeyo Marakwet-Ravine, khu vực Kaptagat.  Theo cảnh sát khu vực, Kiptum mất lái, lao xe ra khỏi đường và rơi xuống mương cách đó khoảng 60 mét trước khi tông vào một thân cây lớn.  Trong ba người, chỉ Sharon sống sót với nhiều chấn thương, được cấp cứu tại bệnh viện Racecourse. Chiếc xe hư hỏng nặng được kéo về đồn cảnh sát Kaptagat.  &quot;Kelvin Kiptum, người giữ kỷ lục marathon thế giới, tự gây tai nạn khi lái xe chở hai hành khách. Kiptum và Hakizimana chết tại chỗ. Người thứ ba đã được đưa tới bệnh viện&quot;, đại diện cảnh sát cho biết. Thi thể hai nạn nhân đã được đưa tới nhà xác bệnh viện Racecourse."
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <LinearLayout
