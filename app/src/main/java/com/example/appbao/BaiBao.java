@@ -1,5 +1,7 @@
 package com.example.appbao;
 
+
+
 public class BaiBao {
     private int image1;
     private String name; private String type;
@@ -43,4 +45,5 @@ public class BaiBao {
         this.type = type;
         this.time = time;
     }
+
 }
