@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mnHome"
-        android:icon="@drawable/ic_tintuc"
+        android:icon="@drawable/home_red"
 
-        android:title="Tin tức"/>
+        android:title="Home"/>
 
     <item
         android:id="@+id/mnInfo"
-        android:icon="@drawable/ic_thongbao"
-        android:title="Thông báo"/>
+        android:icon="@drawable/bookmark"
+        android:title="Save"/>
 
     <item
         android:id="@+id/mnSetting"
         android:icon="@drawable/ic_user_red"
-        android:title="Cài đặt"/>
+        android:title="Setting"/>
 </menu>

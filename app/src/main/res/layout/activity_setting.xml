@@ -142,7 +142,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:id="@+id/switchNoti"
                         android:switchMinWidth="50dp"
                         android:theme="@style/notiswitch" />
                 </RelativeLayout>
