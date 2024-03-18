@@ -20,10 +20,13 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.appbao.fragment.HomeFragment;
 import com.example.appbao.fragment.InfoFragment;
 import com.example.appbao.fragment.SettingFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -54,6 +57,19 @@ public class MainActivity extends AppCompatActivity {
         tableLayout = findViewById(R.id.include);
         pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 6);
         viewPager.setAdapter(pagerAdapter);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("News")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Done";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+
+                    }
+                });
+
 
         addControls();
         addEvents();

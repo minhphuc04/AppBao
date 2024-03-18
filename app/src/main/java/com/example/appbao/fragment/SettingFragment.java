@@ -179,8 +179,9 @@ ImageView clickLoginFin;
                     .setContentText("Anh Liêm") //Nội dung thông báo
 
                     .setSmallIcon(R.drawable.logonew)
-                    .setColor(getResources().getColor(R.color.grey))
                     .setLargeIcon(bitmap)
+                    .setColor(getResources().getColor(R.color.grey))
+
                     .build();
             // Các thao tác tiếp theo với đối tượng notification
             NotificationManager notificationManager =(NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
