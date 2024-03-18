@@ -5,7 +5,6 @@
     <string name="app_science">KHOA HỌC</string>
     <string name="app_entertainment">GIẢI TRÍ</string>
     <string name="app_technology">CÔNG NGHỆ</string>
-<<<<<<< HEAD
     <string name="hello_blank_fragment" translatable="false">Xin chào, fragment trống</string>
 
     <string name="channel_name">Channel 1</string>
@@ -13,8 +12,4 @@
 
 
 
-=======
-
-    <string name="hello_blank_fragment" translatable="false">Xin chào, fragment trống</string>
->>>>>>> parent of 36bafe8 (Duy vừa update Notification)
 </resources>

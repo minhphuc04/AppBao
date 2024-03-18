@@ -58,17 +58,7 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 6);
         viewPager.setAdapter(pagerAdapter);
 
-        FirebaseMessaging.getInstance().subscribeToTopic("News")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Done";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
 
-                    }
-                });
 
 
         addControls();
