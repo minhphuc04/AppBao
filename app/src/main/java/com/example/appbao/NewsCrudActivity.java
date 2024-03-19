@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,21 +17,23 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class NewsCrudActivity extends AppCompatActivity {
-    public String DATABASE_NAME = "SqlAppBao1";
-    public String DB_SUFFIX_PATH = "/databases/";
+    public static final String DATABASE_NAME = "SqlAppBao1";
+    public static final String DB_SUFFIX_PATH = "/databases/";
     public static SQLiteDatabase database = null;
-    ArrayAdapter<News> adapterNews;
-    Button opennew;
+    ArrayList<News> adapterNewsList;
+    Button openNewButton;
     ListView lvNews;
+    NewsAdapter newsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_crud);
         addControls();
-        addEvent();
+        addEvents();
         xulycapnhat();
         processCopy();
     }
@@ -42,7 +43,7 @@ public class NewsCrudActivity extends AppCompatActivity {
             File file = getDatabasePath(DATABASE_NAME);
 
             if (!file.exists()) {
-                copyDatabaseFromAssest();
+                copyDatabaseFromAssets();
                 Toast.makeText(this, "Copy Database Successful", Toast.LENGTH_SHORT).show();
             }
 
@@ -55,7 +56,7 @@ public class NewsCrudActivity extends AppCompatActivity {
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                News news = adapterNews.getItem(position);
+                News news = adapterNewsList.get(position);
                 Intent intent = new Intent(NewsCrudActivity.this, UpdateNewsActivity.class);
                 intent.putExtra("uu", news);
                 startActivity(intent);
@@ -71,28 +72,27 @@ public class NewsCrudActivity extends AppCompatActivity {
 
     private void loadData() {
         database = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
+        adapterNewsList.clear();
         Cursor cursor = database.rawQuery("SELECT * FROM News", null);
 
-        adapterNews.clear();
         while (cursor.moveToNext()) {
             String ma = cursor.getString(0);
             String title = cursor.getString(1);
             String content = cursor.getString(2);
             String cateID = cursor.getString(3);
-            String image = cursor.getString(4);
+            byte[] image = cursor.getBlob(4);
             String publishedDate = cursor.getString(5);
             String authorID = cursor.getString(6);
 
-
-
-            News u = new News(ma, title, content,cateID,image,publishedDate, authorID);
-            adapterNews.add(u);
+            News u = new News(ma, title, content, cateID, image, publishedDate, authorID);
+            adapterNewsList.add(u);
         }
         cursor.close();
+        newsAdapter.notifyDataSetChanged();
     }
 
-    private void addEvent() {
-        opennew.setOnClickListener(new View.OnClickListener() {
+    private void addEvents() {
+        openNewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NewsCrudActivity.this, ThemNewsActivity.class);
@@ -102,13 +102,14 @@ public class NewsCrudActivity extends AppCompatActivity {
     }
 
     private void addControls() {
-        opennew = findViewById(R.id.btnOpenNewNews);
+        openNewButton = findViewById(R.id.btnOpenNewNews);
         lvNews = findViewById(R.id.lvNews);
-        adapterNews = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        lvNews.setAdapter(adapterNews);
+        adapterNewsList = new ArrayList<>();
+        newsAdapter = new NewsAdapter(this, R.layout.layout_item_news, adapterNewsList);
+        lvNews.setAdapter(newsAdapter);
     }
 
-    private void copyDatabaseFromAssest() {
+    private void copyDatabaseFromAssets() {
         try {
             InputStream inputFile = getAssets().open(DATABASE_NAME);
             String outputFileName = getDatabasePath();
