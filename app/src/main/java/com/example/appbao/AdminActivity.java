@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class AdminActivity extends AppCompatActivity {
-    TextView Cate,User,News;
+    LinearLayout Cate,User,News;
 
 
 

@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/alata</item>
         <item>@font/anton</item>
+        <item>@font/archivo_black</item>
         <item>@font/baloo</item>
         <item>@font/bigshot_one</item>
         <item>@font/calistoga</item>
