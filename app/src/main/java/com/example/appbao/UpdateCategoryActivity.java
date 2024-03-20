@@ -77,11 +77,19 @@ public class UpdateCategoryActivity extends AppCompatActivity {
         edtTenCN=findViewById(R.id.edtNameCN);
         btnUpdate=findViewById(R.id.btnUpdate);
         btnDelete=findViewById(R.id.btnDelete);
+
         Intent intent = getIntent();
         Categories u = (Categories) intent.getSerializableExtra("uu");
-        edtmaCN.setText(u.getMa().toString());
-        edtTenCN.setText(u.getTen().toString());
-        edtmaCN.setEnabled(false);
 
+        if (u != null) {
+            edtmaCN.setText(u.getMa());
+            edtTenCN.setText(u.getTen());
+            edtmaCN.setEnabled(false);
+        } else {
+            // Xử lý khi đối tượng Categories là null
+            Toast.makeText(this, "Error: Categories object is null", Toast.LENGTH_SHORT).show();
+            // Ví dụ: finish();
+        }
     }
+
 }

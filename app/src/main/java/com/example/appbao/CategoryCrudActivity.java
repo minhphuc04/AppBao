@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class CategoryCrudActivity extends AppCompatActivity {
     public String DB_SUFFIX_PATH="/databases/";
     public static SQLiteDatabase database=null;
     ArrayAdapter<Categories> adapterCate;
-    Button opennew;
+    ImageButton opennew;
     ListView lvCate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,13 @@ public class CategoryCrudActivity extends AppCompatActivity {
         }
         cursor.close();
     }
+    private void addControls() {
+        opennew = findViewById(R.id.BtnNew); // Make sure R.id.BtnNew matches the ID in your layout XML file
+        lvCate = findViewById(R.id.lvCate);
+        adapterCate = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        lvCate.setAdapter(adapterCate);
+    }
+
     private void addEvent() {
         opennew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,13 +106,6 @@ public class CategoryCrudActivity extends AppCompatActivity {
         });
     }
 
-    private void addControls() {
-        opennew = findViewById(R.id.btnOpenNew);
-        lvCate = findViewById(R.id.lvCate);
-        adapterCate = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        lvCate.setAdapter(adapterCate);
-
-    }
     private void copyDatabaseFromAssest() {
         try {
             InputStream inputFile = getAssets().open(DATABASE_NAME);

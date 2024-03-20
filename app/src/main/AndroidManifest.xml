@@ -18,9 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
-        <activity
-            android:name=".NotificationActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LanguageActivity"
             android:exported="false" />
@@ -69,6 +67,9 @@
         <activity
             android:name=".CategoryCrudActivity"
             android:exported="false" />
+        <activity android:name=".ThemCategoryActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".NewsCrudActivity"
             android:exported="false" />
