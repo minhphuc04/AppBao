@@ -1,6 +1,8 @@
 package com.example.appbao;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,10 +60,13 @@ public class MyArrayAdapter extends BaseAdapter implements Filterable {
         TextView time = convertView.findViewById(R.id.txtTime);
 
         // Hiển thị thông tin của phần tử
-        des.setText(item.getName());
-        img.setImageResource(item.getImage1());
-        type.setText(item.getType());
-        time.setText(item.getTime());
+           des.setText(item.getMa());
+        des.setText(item.getTitle());
+        byte[] hinh = item.getHinh();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinh,0,hinh.length);
+        img.setImageBitmap(bitmap);
+         type.setText(item.getCategoryID());
+         time.setText(item.getCreatedDate());
 
 
         return convertView; // Trả về view đã được thiết kế
@@ -80,7 +85,7 @@ public class MyArrayAdapter extends BaseAdapter implements Filterable {
             if (constraint != null && constraint.length() > 0) {
                 ArrayList<BaiBao> filteredItems = new ArrayList<>();
                 for (BaiBao item : originalList) {
-                    if (item.getName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                    if (item.getTitle().toLowerCase().contains(constraint.toString().toLowerCase())) {
                         filteredItems.add(item);
                     }
                 }

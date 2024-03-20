@@ -70,9 +70,12 @@ btnSaveNews.setOnClickListener(new View.OnClickListener() {
         } else {
             Toast.makeText(ThemNewsActivity.this, "Insert new record failed", Toast.LENGTH_SHORT).show();
         }
+
     }
+
 });
         // Lưu ảnh vào cơ sở dữ liệu ở đây
+
 
     }
 
