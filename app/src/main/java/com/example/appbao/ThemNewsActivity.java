@@ -47,10 +47,7 @@ public class ThemNewsActivity extends AppCompatActivity {
         // Xu ly hinh Bitmap --> byte[]
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-
-
-
-        byte[] hinh = byteArrayOutputStream.toByteArray();
+          byte[] hinh = byteArrayOutputStream.toByteArray();
 btnSaveNews.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

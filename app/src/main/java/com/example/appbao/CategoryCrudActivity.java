@@ -64,7 +64,7 @@ public class CategoryCrudActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Categories Categories = adapterCate.getItem(position);
                 Intent intent = new Intent(CategoryCrudActivity.this,UpdateCategoryActivity.class);
-                intent.putExtra("u",Categories);
+                intent.putExtra("uu",Categories);
                 startActivity(intent);
             }
         });

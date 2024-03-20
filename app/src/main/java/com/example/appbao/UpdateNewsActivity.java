@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -114,6 +115,9 @@ public class UpdateNewsActivity extends AppCompatActivity {
         edtContentCN.setText(u.getContent());
         edtCateIDCN.setText(u.getCategoryID());
         edtAuthorIDCN.setText(u.getAuthorID());
+        byte[] hinh = u.getHinh();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinh,0,hinh.length);
+        ivHinhNewCN.setImageBitmap(bitmap);
         edtCreatedDateCN.setText(u.getCreatedDate());
         edtMaNewCN.setEnabled(false);
 
