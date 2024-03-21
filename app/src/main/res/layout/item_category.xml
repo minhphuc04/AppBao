@@ -5,18 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="#FAF7F7">
+    >
 
     <RelativeLayout
+        android:gravity="center"
+        app:tint="@android:color/transparent"
 
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="5dp"
+        >
 
         <RelativeLayout
+            app:tint="@android:color/transparent"
 
 
             android:layout_width="wrap_content"
@@ -30,24 +34,25 @@
                 android:alpha="0.3"
                 android:src="@drawable/bg_category"
                 app:cardElevation="25dp"
-                app:tint="#77000000"></ImageView>
+                app:tint="#77000000" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="3dp"
                 android:layout_marginBottom="3dp"
-                android:src="@drawable/bg_category"></ImageView>
+                android:src="@drawable/bg_category" />
 
 
         </RelativeLayout>
 
         <RelativeLayout
 
+
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_alignParentRight="true"
 
+            android:layout_alignParentRight="true"
             android:layout_marginTop="7dp"
             android:layout_marginRight="37dp">
 
@@ -87,26 +92,38 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-
-            android:layout_marginLeft="100dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/scienceCN"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/amaranth"
-                android:gravity="center_vertical"
-                android:text="Science"
+                android:id="@+id/textViewMaCate"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+
+                android:fontFamily="@font/calistoga"
+                android:text="ID"
                 android:textAllCaps="true"
                 android:textColor="#000"
-                android:textSize="25sp"
+                android:textSize="25sp" />
 
-                />
+            <TextView
+                android:id="@+id/textViewNameCate"
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="fill_vertical"
+
+                android:text="Category Name"
+                android:textAllCaps="true"
+                android:textColor="#000"
+                android:textSize="18sp" />
 
         </LinearLayout>
+
 
     </RelativeLayout>
 

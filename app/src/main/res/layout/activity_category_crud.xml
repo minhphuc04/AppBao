@@ -11,10 +11,12 @@
         android:id="@+id/lvCate"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:divider="@null"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:dividerHeight="0dp" />
 
-        >
-
-    </ListView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -25,25 +27,15 @@
         android:layout_marginBottom="20dp"
         app:cardElevation="3dp"
         app:cardBackgroundColor="#fff"
-        app:cardCornerRadius="28dp"
-    >
+        app:cardCornerRadius="28dp">
 
-    <ImageButton
-        android:id="@+id/BtnNew"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/ic_add_ct"
-        />
-</androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
-
-    </RelativeLayout>
+        <ImageButton
+            android:id="@+id/BtnNew"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ic_add_ct"
+            />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

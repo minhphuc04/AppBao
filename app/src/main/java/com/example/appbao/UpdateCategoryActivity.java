@@ -29,9 +29,9 @@ public class UpdateCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UpdateCategoryActivity.this);
-                builder.setTitle("Delete");
-                builder.setMessage("Do you want to delete?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle("Xóa");
+                builder.setMessage("Bạn muốn xóa dữ liệu này?");
+                builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int kq = CategoryCrudActivity.database.delete("Categories","CategoryID=?",
@@ -40,7 +40,7 @@ public class UpdateCategoryActivity extends AppCompatActivity {
 
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -56,21 +56,32 @@ public class UpdateCategoryActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ContentValues values = new ContentValues();
-                values.put("CategoryID",edtmaCN.getText().toString());
-                values.put("Name",edtTenCN.getText().toString());
-                int kq = CategoryCrudActivity.database.update("Categories",values,"CategoryID=?",
-                        new String[]{edtmaCN.getText().toString()});
-                if(kq>0){
-                    finish();
-                }
-                else
-                {
-                    Toast.makeText(UpdateCategoryActivity.this, "Update new record Fail", Toast.LENGTH_SHORT).show();
+                // Kiểm tra xem cả hai trường CategoryID và Name có được nhập không
+                String categoryID = edtmaCN.getText().toString().trim();
+                String name = edtTenCN.getText().toString().trim();
+
+                if (categoryID.isEmpty() || name.isEmpty()) {
+                    // Nếu một trong hai trường rỗng, hiển thị thông báo và không thực hiện cập nhật vào cơ sở dữ liệu
+                    Toast.makeText(UpdateCategoryActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Nếu cả hai trường đều có giá trị, thực hiện cập nhật dữ liệu vào cơ sở dữ liệu
+                    ContentValues values = new ContentValues();
+                    values.put("CategoryID", categoryID);
+                    values.put("Name", name);
+
+                    int kq = CategoryCrudActivity.database.update("Categories", values, "CategoryID=?", new String[]{categoryID});
+                    if (kq > 0) {
+                        // Nếu cập nhật thành công, kết thúc activity
+                        finish();
+                    } else {
+                        // Nếu cập nhật không thành công, hiển thị thông báo
+                        Toast.makeText(UpdateCategoryActivity.this, "Cập nhật dữ liệu thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
     }
+
 
     private void addcontrols() {
         edtmaCN=findViewById(R.id.edtMaCN);
@@ -79,17 +90,18 @@ public class UpdateCategoryActivity extends AppCompatActivity {
         btnDelete=findViewById(R.id.btnDelete);
 
         Intent intent = getIntent();
-        Categories u = (Categories) intent.getSerializableExtra("uu");
+        Categories category = (Categories) intent.getSerializableExtra("category");
 
-        if (u != null) {
-            edtmaCN.setText(u.getMa());
-            edtTenCN.setText(u.getTen());
+        if (category != null) {
+            edtmaCN.setText(category.getMa());
+            edtTenCN.setText(category.getTen());
             edtmaCN.setEnabled(false);
         } else {
-            // Xử lý khi đối tượng Categories là null
-            Toast.makeText(this, "Error: Categories object is null", Toast.LENGTH_SHORT).show();
+            // Xử lý khi đối tượng Categories là nullmkk
+            Toast.makeText(this, null, Toast.LENGTH_SHORT).show();
             // Ví dụ: finish();
         }
     }
+
 
 }

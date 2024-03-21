@@ -1,66 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="30dp"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".UpdateCategoryActivity">
-    <LinearLayout
+
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_view"/>
+    <TextView
+        android:id="@+id/txtAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Category"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID"
-            android:textSize="30sp" />
+        />
 
-        <EditText
-            android:id="@+id/edtMaCN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
 
-            android:inputType="text"
-            android:textSize="30sp" />
-    </LinearLayout>
+    <EditText
+        android:id="@+id/edtMaCN"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tên User"
-            android:textSize="30sp" />
+        android:background="@drawable/bg_login"
+        android:maxLines="1"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="150dp"
 
-        <EditText
-            android:id="@+id/edtNameCN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+        android:ems="10"
+        android:hint="ID"
 
-            android:inputType="text"
-            android:textSize="30sp" />
-    </LinearLayout>
+        android:inputType="number"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edtNameCN"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+
+        android:background="@drawable/bg_login"
+        android:maxLines="1"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="230dp"
+
+        android:ems="10"
+        android:hint="Tên Category"
+
+        android:inputType="text"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update" />
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
 
+        android:layout_marginEnd="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="330dp"
+        android:background="@drawable/bg_btn_login"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+
+
+        android:text="Cập nhật" />
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
 
-</LinearLayout>
+        android:layout_marginEnd="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/bg_btn_login"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+
+
+        android:text="Xoá" />
+</RelativeLayout>
