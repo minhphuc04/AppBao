@@ -45,7 +45,7 @@ public class HealthyActivity extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BaiBao baiBao = mylist.get(position);
                 // Kiểm tra nếu CategoryID là "2" (Thể thao)
-                if (baiBao.getCategoryID().equals("7")) {
+                if (baiBao.getCategoryID().equals("4")) {
                     // Chuyển hướng tới Activity của Sports
                     Intent intent = new Intent(getActivity(), SportsActivity.class);
                     startActivity(intent);
@@ -90,7 +90,7 @@ public class HealthyActivity extends Fragment {
             SQLiteDatabase database = getActivity().openOrCreateDatabase(DATABASE_NAME, getActivity().MODE_PRIVATE, null);
 
             // Thực hiện truy vấn để lấy dữ liệu từ bảng News với điều kiện CategoryID là 2
-            Cursor cursor = database.rawQuery("SELECT * FROM News WHERE CategoryID = ?", new String[]{"7"});
+            Cursor cursor = database.rawQuery("SELECT * FROM News WHERE CategoryID = ?", new String[]{"4"});
 
             // Xóa dữ liệu cũ trước khi thêm mới
             mylist.clear();

@@ -51,29 +51,29 @@
             android:textColor="#E4DEDE" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="#00FFFFFF"
 
 
+            app:cardCornerRadius="8dp">
 
-            app:cardBackgroundColor="#00FFFFFF">
             <TextView
 
 
-                android:textSize="14sp"
                 android:id="@+id/txtType"
-                android:layout_width="70dp"
+                android:layout_width="100dp"
                 android:layout_height="30dp"
-
-
                 android:background="#FB3556"
+
+
+                android:gravity="center"
                 android:text="Sport"
                 android:textColor="#E4DEDE"
-                android:textStyle="bold"
-                android:gravity="center" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
 
