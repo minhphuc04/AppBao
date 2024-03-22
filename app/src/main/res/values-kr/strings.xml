@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">홈</string>
+    <string name="app_home">홈</string>
     <string name="app_sport">스포츠</string>
     <string name="app_health">건강</string>
     <string name="app_science">과학</string>

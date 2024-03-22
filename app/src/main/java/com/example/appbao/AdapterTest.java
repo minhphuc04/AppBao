@@ -54,7 +54,7 @@ public class AdapterTest extends BaseAdapter {
             convertView= inflater.inflate(Layout,null);
             //Tham chieu id trong layout_item
             holder.txtType=convertView.findViewById(R.id.txtType);
-            holder.txt1=convertView.findViewById(R.id.txtTitle);
+            holder.txt1=convertView.findViewById(R.id.txtTitlee);
             holder.txtTime=convertView.findViewById(R.id.txtTime);
             holder.img1=convertView.findViewById(R.id.ivHinhitem);
             convertView.setTag(holder);
