@@ -58,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 6);
         viewPager.setAdapter(pagerAdapter);
 
+// Kiểm tra xem người dùng đã đăng nhập hay chưa
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        String email = sessionManager.getEmail();
+        String password = sessionManager.getPassword();
+
+        if (email != null && password != null) {
+            // Người dùng đã đăng nhập, thực hiện các hành động cần thiết
+        } else {
+            // Người dùng chưa đăng nhập, chuyển đến activity đăng nhập
+        }
 
 
 

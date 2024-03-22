@@ -7,30 +7,29 @@
     android:background="@drawable/backgroundlogin"
     tools:context=".RegisterActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:textColor="#fff"
-        android:textSize="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/regUserPhoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:text="Here"
         android:textColor="#DFE2E3"
         android:textSize="21dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/regUserPhoto" />
 
     <EditText
         android:id="@+id/fullname"
@@ -47,12 +46,13 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/textView2"
-        app:layout_constraintVertical_bias="0.1399999" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/Remail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -66,37 +66,39 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/fullname"
-        app:layout_constraintVertical_bias="0.1399999" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/Rpassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="text|textPassword"
         android:padding="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/email"
-        app:layout_constraintVertical_bias="0.1399999" />
+        app:layout_constraintTop_toTopOf="@id/Remail"
+        app:layout_constraintVertical_bias="0.229" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/regisAgain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Phone"
+        android:hint="Comfirm Password"
         android:inputType="textPersonName"
         android:padding="10dp"
         android:textColor="@color/white"
@@ -104,27 +106,28 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/password"
-        app:layout_constraintVertical_bias="0.1399999" />
+        app:layout_constraintTop_toTopOf="@id/Rpassword"
+        app:layout_constraintVertical_bias="0.304" />
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="318dp"
+        android:layout_height="78dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="#00C853"
         android:text="Register"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/phone" />
+        app:layout_constraintTop_toTopOf="@id/regisAgain" />
 
     <TextView
-        android:id="@+id/createtext"
+        android:id="@+id/Rcreatetext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already Accout ? Login Here"
@@ -132,21 +135,19 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerBtn"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/registerBtn" />
 
     <ProgressBar
+        android:id="@+id/RprogressBar"
         style="?android:attr/progressBarStyle"
-        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createtext"
-        app:layout_constraintVertical_bias="0.26"
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/registerBtn"
+        app:layout_constraintEnd_toEndOf="@+id/registerBtn"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/registerBtn"
+        app:layout_constraintTop_toTopOf="@+id/registerBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

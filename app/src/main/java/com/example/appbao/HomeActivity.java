@@ -27,6 +27,7 @@ public class HomeActivity extends Fragment {
     ArrayList<BaiBao> mylist;
     MyArrayAdapter myAdapter;
     ListView lv;
+
     AdapterTest adapterTest;
 
     @Nullable
@@ -76,48 +77,27 @@ public class HomeActivity extends Fragment {
         lv.setAdapter(myAdapter);
 
         // Xử lý sự kiện khi một mục được chọn
+        // Trong Activity hiển thị danh sách các bài báo
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BaiBao baiBao = mylist.get(position);
-
-                // Kiểm tra CategoryID và chuyển hướng dữ liệu tới Activity tương ứng
-                if (baiBao.getCategoryID().equals("1")) {
-                    Intent intent = new Intent(getActivity(), HomeActivity.class);
-                    // Gửi dữ liệu đi với Intent nếu cần
-                    startActivity(intent);
-                } else if (baiBao.getCategoryID().equals("2")) {
-                    Intent intent = new Intent(getActivity(), SportsActivity.class);
-                    // Gửi dữ liệu đi với Intent nếu cần
-                    startActivity(intent);
-                } else if (baiBao.getCategoryID().equals("3")) {
-                    Intent intent = new Intent(getActivity(), EntertainmentActivity.class);
-                    // Gửi dữ liệu đi với Intent nếu cần
-                    startActivity(intent);
-                }
-                else if (baiBao.getCategoryID().equals("4")) {
-                    Intent intent = new Intent(getActivity(), HealthyActivity.class);
-                    // Gửi dữ liệu đi với Intent nếu cần
-                    startActivity(intent);
-                }
-                else if (baiBao.getCategoryID().equals("5")) {
-                    Intent intent = new Intent(getActivity(), TechnologyActivity.class);
-                    // Gửi dữ liệu đi với Intent nếu cần
-                    startActivity(intent);
-                }
-                if(position==0)
-                {
-                    Intent new1 = new Intent();
-                    new1.setClass(getActivity(),News1Activity.class);
-                    startActivity(new1);
-                }
+                // Lấy bài báo được chọn từ danh sách
+                BaiBao selectedArticle = mylist.get(position);
+                // Tạo Intent để mở News1Activity
+                Intent intent = new Intent(getActivity(), News1Activity.class);
+                // Đưa dữ liệu tiêu đề và nội dung của bài báo vào Intent
+                intent.putExtra("title", selectedArticle.getTitle());
+                intent.putExtra("content", selectedArticle.getContent());
+                intent.putExtra("image", selectedArticle.getHinh());
+                // Khởi chạy News1Activity với dữ liệu đã đính kèm
+                startActivity(intent);
             }
         });
+
 
         setHasOptionsMenu(true); // Bật tính năng menu cho Fragment
         return v;
     }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_menu, menu); // Inflate menu_search layout

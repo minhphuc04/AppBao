@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -22,15 +23,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.appbao.AdminActivity;
 import com.example.appbao.FingerLoginActivity;
 import com.example.appbao.LanguageActivity;
 import com.example.appbao.NotificationChanel;
 import com.example.appbao.R;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Date;
 
 public class SettingFragment extends Fragment {
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -45,6 +51,9 @@ ImageView clickLoginFin;
     boolean initialNightMode; // Biến để lưu trữ trạng thái ban đầu
 
     SharedPreferences sharedPreferences;
+
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
     SharedPreferences.Editor editor;
     private SwitchCompat switchNoti;
     private static final String PREFS_NAME = "NotificationPrefs";
@@ -75,6 +84,39 @@ ImageView clickLoginFin;
 
 
 
+    public void updateUserInfo() {
+        View rootView = getView(); // Lấy rootView của Fragment
+        if (rootView != null) {
+            TextView usernameTextView = rootView.findViewById(R.id.nav_username);
+            TextView emailTextView = rootView.findViewById(R.id.nav_usermail);
+            ImageView userPhotoImageView = rootView.findViewById(R.id.nav_userPhoto);
+
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (currentUser != null) {
+                String userEmail = currentUser.getEmail();
+                String userName = currentUser.getDisplayName();
+                Uri userPhotoUri = currentUser.getPhotoUrl();
+
+                if (userName != null) {
+                    usernameTextView.setText(userName);
+                }
+
+                if (userEmail != null) {
+                    emailTextView.setText(userEmail);
+                }
+
+                if (userPhotoUri != null) {
+                    Glide.with(this).load(userPhotoUri).into(userPhotoImageView);
+                }
+            }
+        }
+    }
+
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,9 +125,11 @@ ImageView clickLoginFin;
         clickLoginFin = view.findViewById(R.id.clickLoginFin);
         switchNoti = view.findViewById(R.id.switchNoti);
         btn_Language = view.findViewById(R.id.btn_Language);
+        mAuth = FirebaseAuth.getInstance()  ;
+        currentUser = mAuth.getCurrentUser();
 
         addEventNofi();
-
+        updateUserInfo();
         btn_Language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -120,6 +120,26 @@ public class HealthyActivity extends Fragment {
 
             // Đóng con trỏ sau khi sử dụng
             cursor.close();
+            myAdapter = new MyArrayAdapter(getActivity(), R.layout.layout_items, mylist);
+            lv.setAdapter(myAdapter);
+
+            // Xử lý sự kiện khi một mục được chọn
+            // Trong Activity hiển thị danh sách các bài báo
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // Lấy bài báo được chọn từ danh sách
+                    BaiBao selectedArticle = mylist.get(position);
+                    // Tạo Intent để mở News1Activity
+                    Intent intent = new Intent(getActivity(), News1Activity.class);
+                    // Đưa dữ liệu tiêu đề và nội dung của bài báo vào Intent
+                    intent.putExtra("title", selectedArticle.getTitle());
+                    intent.putExtra("content", selectedArticle.getContent());
+                    intent.putExtra("image", selectedArticle.getHinh());
+                    // Khởi chạy News1Activity với dữ liệu đã đính kèm
+                    startActivity(intent);
+                }
+            });
 
             // Thông báo cho adapter rằng dữ liệu đã thay đổi
             myAdapter.notifyDataSetChanged();

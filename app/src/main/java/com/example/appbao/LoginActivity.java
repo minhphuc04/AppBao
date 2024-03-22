@@ -13,77 +13,95 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appbao.HomeActivity;
-import com.example.appbao.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabaseKtxRegistrar;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText mEmail , mPassword;
-    Button mLoginBtn;
-    TextView mCreateBtn;
-    ProgressBar progressBar;
-    FirebaseAuth fAuth;
-
+    EditText userMail, userPassword;
+    Button btnLogin;
+    ProgressBar loginProgress;
+    TextView createText;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmail = findViewById(R.id.Email);
-        mPassword = findViewById(R.id.password);
-        progressBar = findViewById(R.id.progressBar);
-        mLoginBtn = findViewById(R.id.loginBtn);
-        mCreateBtn = findViewById(R.id.createtext);
+        userMail = findViewById(R.id.Login_mail);
+        userPassword = findViewById(R.id.Login_password);
+        loginProgress = findViewById(R.id.progressBar);
+        btnLogin = findViewById(R.id.loginbtn);
+        createText = findViewById(R.id.createtext);
 
-        fAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-        mCreateBtn.setOnClickListener(new View.OnClickListener() {
+        createText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
+                finish();
             }
         });
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
-
-                if (TextUtils.isEmpty(email)) {
-                    mEmail.setError("Email is Required");
-                    return;
-                }
-                if (TextUtils.isEmpty(password)) {
-                    mPassword.setError("Password is Required");
-                    return;
-                }
-                if (password.length() < 6) {
-                    mPassword.setError("Password must be >= 6 characters");
-                    return;
-                }
-
-                progressBar.setVisibility(View.VISIBLE);
-
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    }
-                });
+                loginUser();
             }
         });
     }
+
+    private void loginUser() {
+        String email = userMail.getText().toString();
+        String password = userPassword.getText().toString();
+
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            showMessage("Vui lòng không bỏ trống");
+            return;
+        }
+
+        loginProgress.setVisibility(View.VISIBLE);
+        btnLogin.setVisibility(View.INVISIBLE);
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        loginProgress.setVisibility(View.INVISIBLE);
+                        btnLogin.setVisibility(View.VISIBLE);
+
+                        if (task.isSuccessful()) {
+
+
+                                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                                sessionManager.saveLoginDetails(email, password);
+
+                                // Chuyển đến activity Home
+                                updateUI();
+                            
+
+                        } else {
+                            showMessage(task.getException().getMessage());
+                        }
+                    }
+                });
+    }
+
+    private void updateUI() {
+        Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(homeIntent);
+        finish();
+    }
+
+    private void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
 }

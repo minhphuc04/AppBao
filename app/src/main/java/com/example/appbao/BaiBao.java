@@ -18,8 +18,16 @@ public class BaiBao {
         CreatedDate = createdDate;
         this.authorID = authorID;
     }
+    public BaiBao(String title, String content, byte[] hinh) {
+        this.title = title;
+        this.content = content;
+        this.hinh = hinh;
+
+    }
 
     public String getMa() {
+
+
         return ma;
     }
 

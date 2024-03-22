@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HOME</string>
+    <string name="app_home">HOME</string>
     <string name="app_sport">SPORTS</string>
     <string name="app_health">HEALTH</string>
     <string name="app_science">SCIENCE</string>

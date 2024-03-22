@@ -35,11 +35,13 @@
         >
 
         <LinearLayout
+            android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/nav_userPhoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -47,14 +49,25 @@
                 android:src="@drawable/profile" />
 
             <TextView
-                android:id="@+id/hello"
+                android:id="@+id/nav_username"
                 style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="User Name"
-                android:textSize="25dp"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nav_usermail"
+                style="@style/TextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="User address"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -91,9 +104,9 @@
                         android:src="@drawable/round_back_noti" />
 
                     <TextView
-                        style="@style/TextColor"
-
                         android:id="@+id/textView3"
+
+                        style="@style/TextColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -138,11 +151,11 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchNoti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:id="@+id/switchNoti"
                         android:switchMinWidth="50dp"
                         android:theme="@style/notiswitch" />
                 </RelativeLayout>
