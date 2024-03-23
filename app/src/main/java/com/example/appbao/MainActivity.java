@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tableLayout));
 
         // Kiểm tra xác thực vân tay trước khi vào ứng dụng
-        authenticateWithBiometrics();
+            authenticateWithBiometrics();
     }
 
     // Phương thức kiểm tra xác thực vân tay

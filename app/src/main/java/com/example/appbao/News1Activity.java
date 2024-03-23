@@ -24,13 +24,16 @@ Button back;
             // Lấy dữ liệu từ Intent
             String title = intent.getStringExtra("title");
             String content = intent.getStringExtra("content");
+            String time = intent.getStringExtra("time");
             byte[] imageByteArray = intent.getByteArrayExtra("image");
             // Nếu dữ liệu không rỗng, hiển thị lên layout
-            if (title != null && content != null && imageByteArray != null) {
+            if (title != null && content != null && imageByteArray != null && time!=null) {
                 TextView titleTextView = findViewById(R.id.txtTitlee);
                 TextView contentTextView = findViewById(R.id.Content11);
+                TextView txtTimeDetail = findViewById(R.id.txtTimeDetail);
                 ImageView ImageDetail = findViewById(R.id.ImageDetail);
                 titleTextView.setText(title);
+                txtTimeDetail.setText(time);
                 contentTextView.setText(content);
                 // Chuyển đổi mảng byte thành đối tượng Bitmap
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);

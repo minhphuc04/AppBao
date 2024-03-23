@@ -136,6 +136,7 @@ public class HealthyActivity extends Fragment {
                     intent.putExtra("title", selectedArticle.getTitle());
                     intent.putExtra("content", selectedArticle.getContent());
                     intent.putExtra("image", selectedArticle.getHinh());
+                    intent.putExtra("time", selectedArticle.getCreatedDate());
                     // Khởi chạy News1Activity với dữ liệu đã đính kèm
                     startActivity(intent);
                 }
