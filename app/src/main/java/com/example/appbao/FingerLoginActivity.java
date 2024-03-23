@@ -1,6 +1,7 @@
 package com.example.appbao;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
@@ -60,27 +61,23 @@ public class FingerLoginActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(FingerLoginActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
-                boolean authenticationSuccessful = true;
 
-                // Kiểm tra kết quả xác thực
-                if (authenticationSuccessful) {
-                    // Chuyển sang HomeActivity
-                    Intent intent = new Intent(FingerLoginActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                } else {
-                    // Xác thực thất bại
-                    Toast.makeText(FingerLoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
-                }
-                // Đặt biến boolean để xác định xác thực thành công
-
+                // Chuyển hướng đến MainActivity khi xác thực thành công
+                Intent intent = new Intent(FingerLoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish(); // Kết thúc FingerLoginActivity để ngăn người dùng quay lại màn hình xác thực vân tay
             }
+
+
 
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
             }
+
         });
+
 
         BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Login")
@@ -97,5 +94,26 @@ public class FingerLoginActivity extends AppCompatActivity {
                 biometricPrompt.authenticate(promptInfo);
             }
         });
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                // Xác thực vân tay thành công, tiếp tục với MainActivity
+                Intent intent = new Intent(FingerLoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish(); // Kết thúc MainActivity để ngăn người dùng quay lại
+            } else {
+                // Xác thực vân tay không thành công, quay lại màn hình đăng nhập hoặc thoát ứng dụng
+                finish();
+            }
+        }
+    }
+
+
+
 }

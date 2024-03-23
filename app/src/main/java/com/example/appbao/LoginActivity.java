@@ -5,103 +5,107 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appbao.HomeActivity;
+import com.example.appbao.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabaseKtxRegistrar;
+
+import java.io.InputStream;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText userMail, userPassword;
-    Button btnLogin;
-    ProgressBar loginProgress;
-    TextView createText;
-    FirebaseAuth mAuth;
+    EditText mEmail , mPassword;
+    Button mLoginBtn;
+    TextView mCreateBtn;
+    ProgressBar progressBar;
+    FirebaseAuth fAuth;
+    private boolean passwordShowing=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userMail = findViewById(R.id.Login_mail);
-        userPassword = findViewById(R.id.Login_password);
-        loginProgress = findViewById(R.id.progressBar);
-        btnLogin = findViewById(R.id.loginbtn);
-        createText = findViewById(R.id.createtext);
+        mEmail = findViewById(R.id.Email);
+        mPassword = findViewById(R.id.password);
+        progressBar = findViewById(R.id.progressBar);
+        mLoginBtn = findViewById(R.id.loginBtn);
+        mCreateBtn = findViewById(R.id.createtext);
+        final ImageView passwordIc=findViewById(R.id.ic_password);
 
-        mAuth = FirebaseAuth.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
-        createText.setOnClickListener(new View.OnClickListener() {
+        passwordIc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(registerIntent);
-                finish();
+                if(passwordShowing){
+                    passwordShowing=false;
+                    mPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    passwordIc.setImageResource(R.drawable.ic_show_password);
+                }
+                else {
+                    passwordShowing=true;
+                    mPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    passwordIc.setImageResource(R.drawable.ic_hide_password);
+                }
+                mPassword.setSelection(mPassword.length());
             }
         });
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser();
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
-    }
 
-    private void loginUser() {
-        String email = userMail.getText().toString();
-        String password = userPassword.getText().toString();
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = mEmail.getText().toString().trim();
+                String password = mPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            showMessage("Vui lòng không bỏ trống");
-            return;
-        }
+                if (TextUtils.isEmpty(email)) {
+                    mEmail.setError("Email không được để trống");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    mPassword.setError("Password không được để trống");
+                    return;
+                }
+                if (password.length() < 6) {
+                    mPassword.setError("Mật khẩu phải dài 6 ký tự");
+                    return;
+                }
 
-        loginProgress.setVisibility(View.VISIBLE);
-        btnLogin.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        loginProgress.setVisibility(View.INVISIBLE);
-                        btnLogin.setVisibility(View.VISIBLE);
-
                         if (task.isSuccessful()) {
-
-
-                                SessionManager sessionManager = new SessionManager(getApplicationContext());
-                                sessionManager.saveLoginDetails(email, password);
-
-                                // Chuyển đến activity Home
-                                updateUI();
-                            
-
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         } else {
-                            showMessage(task.getException().getMessage());
+                            Toast.makeText(LoginActivity.this, "Email hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
+            }
+        });
     }
-
-    private void updateUI() {
-        Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(homeIntent);
-        finish();
-    }
-
-    private void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-
 }

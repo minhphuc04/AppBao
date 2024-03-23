@@ -105,9 +105,8 @@ public class MainActivity extends AppCompatActivity {
         if (biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS) {
             // Nếu thiết bị hỗ trợ xác thực vân tay, mở activity xác thực vân tay
             Intent intent = new Intent(MainActivity.this, FingerLoginActivity.class);
-            startActivity(intent);
-
-            finish(); // Kết thúc MainActivity để ngăn người dùng quay lại
+            startActivityForResult(intent, 1); // Sử dụng startActivityForResult() thay vì startActivity()
+            // không cần gọi finish() ở đây
         }
     }
 
