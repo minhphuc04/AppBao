@@ -57,7 +57,7 @@
 
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/Login_mail"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/bg_dark"
@@ -81,7 +81,7 @@
             >
             <EditText
                 android:layout_toStartOf="@id/ic_password"
-                android:id="@+id/password"
+                android:id="@+id/Login_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -124,7 +124,7 @@
 
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/loginbtn"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
