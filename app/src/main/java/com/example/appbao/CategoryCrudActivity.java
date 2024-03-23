@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class CategoryCrudActivity extends AppCompatActivity {
 
@@ -92,7 +93,7 @@ public class CategoryCrudActivity extends AppCompatActivity {
     private void addControls() {
         opennew = findViewById(R.id.BtnNew); // Make sure R.id.BtnNew matches the ID in your layout XML file
         lvCate = findViewById(R.id.lvCate);
-        adapterCate = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        adapterCate = new CategoriesAdapter(this, new ArrayList<>());
         lvCate.setAdapter(adapterCate);
     }
 
