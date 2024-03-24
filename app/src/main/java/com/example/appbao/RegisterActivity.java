@@ -11,11 +11,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,8 +41,10 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar loadingProgress;
     private Button registerBtn;
     private Uri pickedImageUri;
-
+    private boolean passwordShowing=false;
     private FirebaseAuth mAuth;
+
+    private TextView createText,txtImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,60 @@ public class RegisterActivity extends AppCompatActivity {
 
         initializeViews();
         setClickListeners();
+
+        final ImageView passwordIc=findViewById(R.id.ic_password);
+        final ImageView CFpasswordIc=findViewById(R.id.ic_RegisPassword);
+
+        passwordIc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(passwordShowing){
+                    passwordShowing=false;
+                    userPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+                    passwordIc.setImageResource(R.drawable.ic_show_password);
+
+                }
+                else {
+                    passwordShowing=true;
+                    userPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+                    passwordIc.setImageResource(R.drawable.ic_hide_password);
+                }
+                userPassword.setSelection(userPassword.length());
+
+            }
+        });
+        CFpasswordIc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(passwordShowing){
+                    passwordShowing=false;
+
+                    userPassword2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+                    CFpasswordIc.setImageResource(R.drawable.ic_show_password);
+                }
+                else {
+                    passwordShowing=true;
+                    userPassword2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+                    CFpasswordIc.setImageResource(R.drawable.ic_hide_password);
+                }
+                userPassword2.setSelection(userPassword2.length());
+
+            }
+        });
+        createText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent LOGINIntent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(LOGINIntent);
+                finish();
+            }
+        });
     }
 
     private void setClickListeners() {
@@ -65,6 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
         loadingProgress = findViewById(R.id.RprogressBar);
         registerBtn = findViewById(R.id.registerBtn);
         mAuth = FirebaseAuth.getInstance();
+        createText = findViewById(R.id.createtext);
+
     }
 
     private void registerUser() {

@@ -123,19 +123,45 @@
 
 
 
-    <Button
-        android:id="@+id/loginbtn"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
-        android:textAllCaps="false"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:text="ĐĂNG NHẬP"
-        android:background="@drawable/bg_dark_btn"
-        android:textColor="@color/white" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_dark"
+
+        >
+
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:background="@drawable/bg_dark_btn"
+            android:padding="10dp"
+            android:text="ĐĂNG NHẬP"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="162dp"
+            android:layout_marginEnd="160dp"
+            android:visibility="invisible" />
+
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -165,12 +191,7 @@
             android:textSize="16dp" />
     </LinearLayout>
 
-    <ProgressBar
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>

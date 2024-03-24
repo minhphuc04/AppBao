@@ -1,153 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundlogin"
+    android:background="#e8eaef"
+    android:orientation="vertical"
     tools:context=".RegisterActivity">
-
     <ImageView
-        android:id="@+id/regUserPhoto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/imageView4"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#F1EAEA"
+        android:background="@drawable/background_login"
+        android:foregroundGravity="center"
+        android:src="@drawable/logonew" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Here"
-        android:textColor="#DFE2E3"
-        android:textSize="21dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regUserPhoto" />
+        android:layout_height="46dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtTitlee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+
+            android:gravity="center"
+            android:text="News"
+
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+
+
+            android:gravity="center"
+            android:textSize="35dp"
+            android:text="App"/>
+
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/fullname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView2"
-        app:layout_constraintVertical_bias="0.076" />
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/bg_dark"
+        android:maxLines="1"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
 
+        android:hint="Họ tên"
+        android:inputType="textPersonName"
+        android:textSize="16sp"/>
     <EditText
         android:id="@+id/Remail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/bg_dark"
+        android:maxLines="1"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:hint="Email"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/fullname"
-        app:layout_constraintVertical_bias="0.16" />
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_dark"
 
-    <EditText
-        android:id="@+id/Rpassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text|textPassword"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Remail"
-        app:layout_constraintVertical_bias="0.229" />
+        >
+        <EditText
+            android:layout_toStartOf="@id/ic_password"
+            android:id="@+id/Rpassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
 
-    <EditText
-        android:id="@+id/regisAgain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Comfirm Password"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Rpassword"
-        app:layout_constraintVertical_bias="0.304" />
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:textSize="16sp"/>
+        <ImageView
+            android:id="@+id/ic_password"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_show_password"
+            android:adjustViewBounds="true"
+            android:layout_marginEnd="20dp"
+            />
 
-    <Button
-        android:id="@+id/registerBtn"
-        android:layout_width="318dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="#00C853"
-        android:text="Register"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/regisAgain" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/Rcreatetext"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_dark"
+
+        >
+        <EditText
+            android:layout_toStartOf="@id/ic_RegisPassword"
+            android:id="@+id/regisAgain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPassword"
+            android:textSize="16sp"/>
+        <ImageView
+            android:id="@+id/ic_RegisPassword"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_show_password"
+            android:adjustViewBounds="true"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_dark"
+
+        >
+        <TextView
+            android:id="@+id/txtImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+
+            android:gravity="center_vertical"
+            android:hint="Chọn hình ảnh"
+
+            android:textSize="16sp"/>
+        <ImageView
+
+            android:id="@+id/regUserPhoto"
+
+            android:src="@drawable/ic_upload_image"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="4dp"
+
+            android:adjustViewBounds="true"
+             />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_dark"
+
+        >
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:background="@drawable/bg_dark_btn"
+            android:padding="10dp"
+            android:text="ĐĂNG KÝ"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/RprogressBar"
+            style="?android:attr/progressBarStyle"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="162dp"
+            android:layout_marginEnd="160dp"
+            android:visibility="invisible" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already Accout ? Login Here"
-        android:textColor="#FFBF00"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerBtn" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp">
 
-    <ProgressBar
-        android:id="@+id/RprogressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/registerBtn"
-        app:layout_constraintEnd_toEndOf="@+id/registerBtn"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/registerBtn"
-        app:layout_constraintTop_toTopOf="@+id/registerBtn" />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Bạn đã có tài khoản?"
+
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/createtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:text="Đăng nhập"
+            android:textColor="#FB3556"
+            android:textStyle="bold"
+            android:textSize="16dp" />
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>
